@@ -1,0 +1,36 @@
+{
+  "name": "vernode",
+  "version": "1.0.0",
+  "author": "Avaray",
+  "license": "MIT",
+  "description": "Checks for latest NodeJS versions",
+  "main": "app.js",
+  "bin": {
+    "vernode": "app.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "version",
+    "versions",
+    "stable",
+    "lts",
+    "current",
+    "json",
+    "ver",
+    "newest",
+    "latest",
+    "available"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avaray/vernode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Avaray/vernode/issues"
+  },
+  "homepage": "https://github.com/Avaray/vernode#readme"
+}
