@@ -1,4 +1,4 @@
-# 🕘 VERNODE
+# ❓ VERNODE
 
 This NPM package checks for latest NodeJS versions.
 
