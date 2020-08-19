@@ -1,6 +1,6 @@
 {
   "name": "vernode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
@@ -28,9 +28,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Avaray/vernode.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Avaray/vernode/issues"
   },
   "homepage": "https://github.com/Avaray/vernode#readme"
 }
