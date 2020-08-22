@@ -104,6 +104,8 @@ dist
 .tern-port
 
 # My files
+TODO
+nodemon.json
 x.js
 test.js
-nodemon.json
+cli.js

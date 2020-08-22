@@ -17,3 +17,7 @@ vernode()
     .catch((err) => console.error(err))
 // 14.8.0
 ````
+
+## TODO
+[ ] CLI
+[ ] Add Nightly version

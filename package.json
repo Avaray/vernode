@@ -6,7 +6,7 @@
   "description": "Checks for latest NodeJS versions",
   "main": "app.js",
   "bin": {
-    "vernode": "app.js"
+    "vernode": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
