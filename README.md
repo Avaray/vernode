@@ -19,5 +19,5 @@ vernode()
 ````
 
 #### TODO
-[ ] CLI
+[ ] CLI  
 [ ] Add Nightly version
