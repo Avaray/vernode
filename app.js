@@ -1,7 +1,6 @@
 module.exports = function() {
     return new Promise((resolve, reject) => {
-        const https = require('https')
-        const request = https.get('https://nodejs.org/en/', (res) => {
+        const request = require('https').get('https://nodejs.org/en/', (res) => {
             let a, b = {}
             res.on('data', x => {
                 a += x;
