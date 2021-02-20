@@ -1,6 +1,6 @@
 # ❓ VERNODE
 
-This NPM package checks for latest NodeJS versions.
+[This NPM package](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
 
 `npm i vernode`
 
