@@ -18,5 +18,23 @@ vernode()
 // 14.8.0
 ````
 
+#### CLI usage
+`npm i -g vernode`
+
+````
+vernode
+// LTS: 12.18.3
+// Current: 14.8.0
+
+vernode lts
+// 12.18.3
+
+vernode current
+// 14.8.0
+
+vernode help
+// guess what it does
+````
+
 #### TODO
 [] Add Nightly version
