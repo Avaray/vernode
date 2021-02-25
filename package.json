@@ -1,6 +1,6 @@
 {
   "name": "vernode",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
@@ -17,6 +17,7 @@
     "stable",
     "lts",
     "current",
+    "nightly",
     "json",
     "ver",
     "newest",

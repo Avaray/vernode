@@ -3,8 +3,11 @@
 const package = require('./package')
 
 if (!process.argv[2]) {
-    VERNODE()
-    .then((o) => console.log('LTS: ' + o.lts + '\nCurrent: ' + o.current ))
+    A()
+    .then((x) => console.log('LTS: ' + x.lts + '\nCurrent: ' + x.current ))
+    .catch((err) => console.error(err));
+    B()
+    .then((x) => console.log('Nightly: ' + x ))
     .catch((err) => console.error(err));
 } else {
     switch (process.argv[2].toLowerCase()) {
@@ -19,22 +22,22 @@ if (!process.argv[2]) {
             break;
         case 'l':
         case 'lts':
-            VERNODE().then((o) => console.log(o.lts)).catch((err) => console.error(err));
+            A().then((x) => console.log(x.lts)).catch((err) => console.error(err));
             break;
         case 'c':
         case 'current':
-            VERNODE().then((o) => console.log(o.current)).catch((err) => console.error(err));
+            A().then((x) => console.log(x.current)).catch((err) => console.error(err));
             break;
-        // case 'n':
-        // case 'nightly':
-        //     VERNODE().then((o) => console.log(o.nightly)).catch((err) => console.error(err));
-        //     break;
+        case 'n':
+        case 'nightly':
+            B().then((x) => console.log(x)).catch((err) => console.error(err));
+            break;
         default:
             console.log('Type "vernode help" to see available commands');
     }
 }
 
-function VERNODE() {
+function A() {
     return new Promise((resolve, reject) => {
         const request = require('https').get('https://nodejs.org/en/', (res) => {
             let a, b = {}
@@ -52,9 +55,26 @@ function VERNODE() {
     })
 }
 
+function B() {
+    return new Promise((resolve, reject) => {
+        const request = require('https').get('https://nodejs.org/download/nightly/index.json', (res) => {
+            let a, b
+            res.on('data', x => {
+                a += x;
+            })
+            res.on('end', () => {
+                let r = /(?<=version":"v).*(?=-n)/m
+                b = a.match(r)[0]
+                resolve(b)
+            })
+        })
+        request.on('error', (err) => reject(err))
+    })
+}
+
 function HELP() {
     console.log('\nVernode ' + package.version + '\n');
-
+    
     console.log('Show both versions');
     console.log('Just run this app.\n');
 
@@ -64,6 +84,6 @@ function HELP() {
     console.log('Show Current version (c, current)');
     console.log('Example: vernode current\n');
 
-    // console.log('Show Nightly version (n, nightly)');
-    // console.log('Example: vernode n');
+    console.log('Show Nightly version (n, nightly)');
+    console.log('Example: vernode nightly');
 }
