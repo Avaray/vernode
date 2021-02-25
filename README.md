@@ -32,6 +32,9 @@ vernode lts
 vernode current
 // 14.8.0
 
+vernode nightly
+// 16.0.0
+
 vernode help
 // guess what it does
 ````
