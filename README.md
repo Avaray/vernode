@@ -25,6 +25,7 @@ vernode()
 vernode
 // LTS: 12.18.3
 // Current: 14.8.0
+// Nightly: 16.0.0
 
 vernode lts
 // 12.18.3
