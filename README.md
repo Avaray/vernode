@@ -40,4 +40,4 @@ vernode help
 ````
 
 #### TODO
-[] Add Nightly version
+[] Add Nightly version (it is in CLI only)
