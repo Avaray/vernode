@@ -1,6 +1,6 @@
 # ❔ VERNODE
 
-[Vernode](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
+### [Vernode](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
 
 ## Requirements
 [NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).  
