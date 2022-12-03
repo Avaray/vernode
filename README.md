@@ -1,44 +1,49 @@
-# ❓ VERNODE
+# ❔ VERNODE
 
-[This NPM package](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
+[Vernode](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
 
-`npm i vernode`
+## Requirements
+[NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).  
+For older NodeJS versions use [Vernode 1.0.6](https://www.npmjs.com/package/vernode/v/1.0.6).
 
+## Installation
+`npm i vernode` or `pnpm add vernode`
+
+## Usage
 ````js
 const vernode = require('vernode')
 
 vernode()
     .then((o) => console.log(o))
     .catch((err) => console.error(err))
-// { lts: '12.18.3', current: '14.8.0' }
+// { lts: '18.12.1', current: '19.2.0', nightly: '20.0.0' }
 
 vernode()
     .then((o) => console.log(o.current))
     .catch((err) => console.error(err))
-// 14.8.0
+// 19.2.0
 ````
 
-#### CLI usage
-`npm i -g vernode`
+## CLI installation
+`npm i -g vernode` or `pnpm add -g vernode`
 
-````
+## CLI usage
+
+````bash
 vernode
-// LTS: 12.18.3
-// Current: 14.8.0
-// Nightly: 16.0.0
+# LTS: 18.12.1
+# Current: 19.2.0
+# Nightly: 20.0.0
 
 vernode lts
-// 12.18.3
+# 18.12.1
 
 vernode current
-// 14.8.0
+# 19.2.0
 
 vernode nightly
-// 16.0.0
+# 20.0.0
 
 vernode help
-// guess what it does
+# guess what it does
 ````
-
-#### TODO
-[] Add Nightly version (it is in CLI only)

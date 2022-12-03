@@ -1,11 +1,13 @@
 {
   "name": "vernode",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
   "main": "app.js",
-  "bin": {"vernode": "cli.js"},
+  "bin": {
+    "vernode": "cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,11 +28,16 @@
     "check",
     "release",
     "releases",
-    "cli"
+    "cli",
+    "dependency-free"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Avaray/vernode.git"
   },
-  "homepage": "https://github.com/Avaray/vernode#readme"
+  "homepage": "https://github.com/Avaray/vernode#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "engineStrict": true
 }
