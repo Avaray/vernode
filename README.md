@@ -4,7 +4,7 @@
 
 ## Requirements
 [NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).  
-For older NodeJS versions use [Vernode 1.0.6](https://www.npmjs.com/package/vernode/v/1.0.6).
+For older NodeJS versions please use [Vernode 1.0.6](https://www.npmjs.com/package/vernode/v/1.0.6).
 
 ## Installation
 `npm i vernode` or `pnpm add vernode`
