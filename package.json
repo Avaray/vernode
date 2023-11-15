@@ -4,9 +4,9 @@
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
-  "main": "app.js",
+  "main": "module.mjs",
   "bin": {
-    "vernode": "cli.js"
+    "vernode": "cli.mjs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -39,5 +39,6 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "devDependencies": {}
 }
