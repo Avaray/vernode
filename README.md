@@ -3,7 +3,8 @@
 ### [Vernode](https://www.npmjs.com/package/vernode) checks for latest NodeJS versions.
 
 ## Requirements
-[NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).  
+**Backend:** [NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).  
+**Frontend:** [Internet Browser supporting Fetch API](https://caniuse.com/fetch).  
 
 ## Installation
 By using [NPM](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry)  
@@ -63,7 +64,7 @@ vernode help
 ````
 
 # Changelog
-### Version 3.0.0
+### Version 3.0.0 - Breaking changes
 - The code has been restructured and the way the module is used has been changed.
 - Optimized data fetching. Data fetching is done in parallel to reduce the execution time. The fetched data is split into chunks, allowing us to download much less data and receive results much faster.
 - In the CLI, added the option to display data as JSON.
