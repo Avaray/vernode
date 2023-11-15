@@ -1,6 +1,6 @@
 {
   "name": "vernode",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
@@ -39,6 +39,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "engineStrict": true,
-  "devDependencies": {}
+  "engineStrict": true
 }
