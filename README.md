@@ -40,14 +40,6 @@ console.log(await current()); // 21.6.2
 console.log(await nightly()); // 22.0.0
 ```
 
-## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
-
-You can use the [CLI](https://en.wikipedia.org/wiki/Command-line_interface) command without installing it by using [NPX](https://www.npmjs.com/package/npx) (it comes with [NPM](https://docs.npmjs.com/cli/v8/commands/npx/)).
-
-```bash
-npx vernode
-```
-
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) installation
 
 By using [NPM](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry)
@@ -84,6 +76,14 @@ vernode nightly
 
 vernode help
 # guess what it does
+```
+
+## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
+
+You can use the [CLI](https://en.wikipedia.org/wiki/Command-line_interface) command without installing it by using [PNPM DLX](https://pnpm.io/cli/dlx).
+
+```bash
+pnpm dlx vernode
 ```
 
 # Changelog
