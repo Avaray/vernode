@@ -1,49 +1,74 @@
-// This removes Warning about experimental Fetch API feature
-// eslint-disable-next-line no-undef
-process.removeAllListeners('warning');
+const stableAddress = 'https://nodejs.org/dist/index.json';
+const nightlyAddress = 'https://nodejs.org/download/nightly/index.json';
 
-const URL_stables = 'https://nodejs.org/dist/index.json'
-const URL_nightly = 'https://nodejs.org/download/nightly/index.json'
+const ltsRegex = /(?:{"version":"v)(?<version>[\d\.]+)(?:-?.+"lts":[^false].+})/;
+const currentAndNightlyRegex = /(?:{"version":"v)(?<version>[\d\.]+)(?:-?.+"lts":false.+})/;
 
-const versions = {}
+const isSemVer = (x) => /\d+\.\d+\.\d+/.test(x);
 
-const fetch_STABLES = async () => {
-  try {
-    const response = await fetch(URL_stables);
-    const data = await response.json()
-    versions.lts = data.find(e => e.lts != false).version.replace('v', '')
-    versions.current = data.find(e => e.lts === false).version.replace('v', '')
-  } catch (error) {
-    /* empty */
+const versions = {};
+
+const checkChunk = (chunk, buildType, regex) => {
+  const match = chunk.match(regex);
+  if (match) {
+    const version = match.groups.version;
+    if (isSemVer(version)) {
+      versions[buildType] = version;
+      // console.log(`Found ${buildType} version: ${version}`);
+      return version;
+    } else {
+      return false;
+    }
+  }
+};
+
+// Function to download data in chunks
+// In this way we will get version number a bit faster and download less data
+async function fetchDataInChunks(buildType) {
+  const response = await fetch(buildType === 'nightly' ? nightlyAddress : stableAddress);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const reader = response.body.getReader();
+  let chunk = await reader.read();
+
+  while (!chunk.done) {
+    const chunkText = new TextDecoder().decode(chunk.value);
+
+    // We can use just one fetch for both 'lts' and 'current' versions
+    if (buildType === 'both') {
+      if (versions.lts && versions.current) break;
+      !versions.lts && checkChunk(chunkText, 'lts', ltsRegex);
+      !versions.current && checkChunk(chunkText, 'current', currentAndNightlyRegex);
+    } else {
+      if (checkChunk(chunkText, buildType, buildType === 'lts' ? ltsRegex : currentAndNightlyRegex)) {
+        break;
+      }
+    }
+    // Continue reading the next chunk...
+    chunk = await reader.read();
   }
 }
 
-const fetch_NIGHTLY = async () => {
-  try {
-    const response = await fetch(URL_nightly);
-    const data = await response.json()
-    versions.nightly = data[0].version.replace('v', '').split('-')[0]
-  } catch (error) {
-    /* empty */
-  }
+export default async function all() {
+  const promises = [fetchDataInChunks('both'), fetchDataInChunks('nightly')];
+  await Promise.all(promises);
+  return versions;
 }
 
-export default async function (x) {
+export async function lts() {
+  await fetchDataInChunks('lts');
+  return versions.lts;
+}
 
-  switch (x) {
-    case 'lts':
-      await fetch_STABLES()
-      return versions
-    case 'current':
-      await fetch_STABLES()
-      return versions
-    case 'nightly':
-      await fetch_NIGHTLY()
-      return versions
-    default:
-      await fetch_STABLES()
-      await fetch_NIGHTLY()
-      return versions
-  }
+export async function nightly() {
+  await fetchDataInChunks('nightly');
+  return versions.nightly;
+}
 
+export async function current() {
+  await fetchDataInChunks('current');
+  return versions.current;
 }

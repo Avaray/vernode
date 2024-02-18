@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-import vernode from './module.mjs';
+import all, { lts, current, nightly } from './module.mjs';
 
-const args = process.argv.slice(2)
+const args = process.argv.slice(2);
 
-function Format(data) {
-  if (args.find(arg => /^js/i.test(arg))) {
-    console.log(data)
+function formatData(data) {
+  if (args.find((arg) => /^j+[son]*$/im.test(arg))) {
+    console.log(data);
+  } else if (Object.keys(data).length === 1) {
+    console.log(data[Object.keys(data)[0]]);
   } else {
     data.lts && console.log(`LTS: ${data.lts}`);
     data.current && console.log(`Current: ${data.current}`);
@@ -14,40 +16,35 @@ function Format(data) {
   }
 }
 
-if (args.length === 0 || args.find(arg => /^js/i.test(arg))) {
-  vernode()
-    .then((x) => Format(x))
-    .catch((err) => console.error(err));
+if (args.length === 0) {
+  const versions = await all();
+  formatData(versions);
 } else {
   switch (args[0].toLowerCase()) {
-    case 'h':
-    case '-h':
-    case 'help':
-    case '-help':
-    case '--help':
-    case 'usage':
-    case '?':
-      HELP();
+    case /^-*[h\?]+[elp]*$/m.test(args[0]) ? args[0] : '':
+      help();
       break;
     case 'l':
     case 'lts':
-      vernode('lts').then((x) => console.log(x.lts)).catch((err) => console.error(err));
+      const ltsVersion = await lts();
+      formatData({ lts: ltsVersion });
       break;
     case 'c':
     case 'current':
-      vernode('current').then((x) => console.log(x.current)).catch((err) => console.error(err));
+      const currentVersion = await current();
+      formatData({ current: currentVersion });
       break;
     case 'n':
     case 'nightly':
-      vernode('nightly').then((x) => console.log(x.nightly)).catch((err) => console.error(err));
+      const nightlyVersion = await nightly();
+      formatData({ nightly: nightlyVersion });
       break;
     default:
       console.log('Type "vernode help" to see available commands');
   }
 }
 
-function HELP() {
-
+function help() {
   console.log('\nShow all versions (LTS, Current and Nightly)');
   console.log('Just run this app without arguments\n');
 
@@ -59,5 +56,4 @@ function HELP() {
 
   console.log('Show Nightly version (n, nightly)');
   console.log('Example: vernode nightly\n');
-
 }
