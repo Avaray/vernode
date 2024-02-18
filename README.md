@@ -5,8 +5,7 @@ You can use this as a [module](https://nodejs.org/api/esm.html#introduction) in 
 
 ## Requirements
 
-**Backend:** [NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).  
-**Frontend:** [Internet Browser supporting Fetch API](https://caniuse.com/fetch).
+[NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).
 
 ## [Module](https://nodejs.org/api/esm.html#introduction) Installation
 
@@ -25,17 +24,20 @@ pnpm add vernode
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
-import vernode from 'vernode';
+import vernode, { lts, current, nightly } from 'vernode';
 
-vernode()
-  .then((obj) => console.log(obj))
-  .catch((err) => console.error(err));
-// { lts: '20.9.0', current: '21.2.0', nightly: '22.0.0' }
+const versions = await vernode();
 
-vernode()
-  .then((obj) => console.log(obj.current))
-  .catch((err) => console.error(err));
-// 21.2.0
+console.log(versions);
+// { lts: '20.11.1', current: '21.6.2', nightly: '22.0.0' }
+
+console.log(versions.lts); // 20.11.1
+console.log(versions.current); // 21.6.2
+console.log(versions.nightly); // 22.0.0
+
+console.log(await lts()); // 20.11.1
+console.log(await current()); // 21.6.2
+console.log(await nightly()); // 22.0.0
 ```
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
@@ -82,15 +84,6 @@ vernode nightly
 
 vernode help
 # guess what it does
-```
-
-You can also use shortcuts
-
-```bash
-vernode l
-vernode c
-vernode n
-vernode j
 ```
 
 # Changelog
