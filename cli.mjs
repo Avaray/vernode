@@ -3,10 +3,11 @@
 import all, { lts, current, nightly } from './module.mjs';
 
 const args = process.argv.slice(2);
+const asJson = args.find((arg) => /^j+[son]*$/im.test(arg));
 
 function formatData(data) {
-  if (args.find((arg) => /^j+[son]*$/im.test(arg))) {
-    console.log(data);
+  if (asJson) {
+    console.log(JSON.stringify(data, null, 2));
   } else if (Object.keys(data).length === 1) {
     console.log(data[Object.keys(data)[0]]);
   } else {
@@ -16,9 +17,9 @@ function formatData(data) {
   }
 }
 
-if (args.length === 0) {
+if (args.length === 0 || (args.length === 1 && asJson)) {
   const versions = await all();
-  formatData(versions);
+  formatData(versions, true);
 } else {
   switch (args[0].toLowerCase()) {
     case /^-*[h\?]+[elp]*$/m.test(args[0]) ? args[0] : '':
