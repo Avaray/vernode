@@ -98,7 +98,7 @@ You can use the [CLI](https://en.wikipedia.org/wiki/Command-line_interface) comm
 pnpm dlx vernode
 ```
 
-[Bun.sh](https://bun.sh/) also supports running code without installation.
+[Bun.sh](https://bun.sh/) also supports running code without installation.  
 Following command will print versions in [JSON](https://en.wikipedia.org/wiki/JSON) format.
 
 ```bash
