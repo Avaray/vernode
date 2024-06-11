@@ -1,6 +1,6 @@
 {
   "name": "vernode",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Avaray",
   "license": "MIT",
   "description": "Checks for latest NodeJS versions",
@@ -8,6 +8,7 @@
   "bin": {
     "vernode": "cli.mjs"
   },
+  "types": "module.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -21,6 +21,12 @@ By using [PNPM](https://pnpm.io/pnpm-cli)
 pnpm add vernode
 ```
 
+By using [BUN](https://bun.sh/docs/cli/install)
+
+```bash
+bun i vernode
+```
+
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
@@ -54,25 +60,31 @@ By using [PNPM](https://pnpm.io/pnpm-cli)
 pnpm add -g vernode
 ```
 
+By using [BUN](https://bun.sh/docs/cli/install)
+
+```bash
+bun i -g vernode
+```
+
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage
 
 ```bash
 vernode
-# LTS: 20.11.1
-# Current: 21.6.2
-# Nightly: 22.0.0
+# LTS: 20.14.0
+# Current: 22.2.0
+# Nightly: 23.0.0
 
 vernode json
-# { lts: '20.11.1', current: '21.6.2', nightly: '22.0.0' }
+# { lts: '20.14.0', current: '22.2.0', nightly: '23.0.0' }
 
 vernode lts
-# 20.11.1
+# 20.14.0
 
 vernode current
-# 21.6.2
+# 22.2.0
 
 vernode nightly
-# 22.0.0
+# 23.0.0
 
 vernode help
 # guess what it does
@@ -84,6 +96,13 @@ You can use the [CLI](https://en.wikipedia.org/wiki/Command-line_interface) comm
 
 ```bash
 pnpm dlx vernode
+```
+
+[Bun.sh](https://bun.sh/) also supports running code without installation.
+Following command will print versions in [JSON](https://en.wikipedia.org/wiki/JSON) format.
+
+```bash
+bunx vernode json
 ```
 
 # Changelog
