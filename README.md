@@ -27,6 +27,12 @@ By using [BUN](https://bun.sh/docs/cli/install)
 bun i vernode
 ```
 
+By using [DENO](https://docs.deno.com/) V2
+
+```bash
+deno i npm:vernode
+```
+
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
@@ -66,6 +72,12 @@ By using [BUN](https://bun.sh/docs/cli/install)
 bun i -g vernode
 ```
 
+By using [DENO](https://docs.deno.com/runtime/reference/cli/install/) V2
+
+```bash
+deno i -g npm:vernode
+```
+
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage
 
 ```bash
@@ -92,17 +104,22 @@ vernode help
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
 
-You can use the [CLI](https://en.wikipedia.org/wiki/Command-line_interface) command without installing it by using [PNPM DLX](https://pnpm.io/cli/dlx).
+By using `bunx` from [BUN](https://bun.sh/)
+
+```bash
+bunx vernode
+```
+
+By using [DENO](https://docs.deno.com/runtime/reference/cli/run/) V2
+
+```bash
+deno run --allow-net npm:vernode
+```
+
+By using `dlx` from [PNPM](https://pnpm.io/cli/dlx)
 
 ```bash
 pnpm dlx vernode
-```
-
-[Bun.sh](https://bun.sh/) also supports running code without installation.  
-Following command will print versions in [JSON](https://en.wikipedia.org/wiki/JSON) format.
-
-```bash
-bunx vernode json
 ```
 
 # Changelog
