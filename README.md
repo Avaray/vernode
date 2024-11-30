@@ -104,7 +104,7 @@ vernode help
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
 
-By using `bunx` from [BUN](https://bun.sh/)
+By using [BUN](https://bun.sh/docs/cli/bunx)
 
 ```bash
 bunx vernode
