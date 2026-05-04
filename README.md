@@ -36,20 +36,22 @@ deno add npm:vernode
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
-import vernode, { lts, current, nightly } from 'vernode';
+import vernode, { lts, current, nightly, last } from 'vernode';
 
 const versions = await vernode();
 
 console.log(versions);
-// { lts: '20.11.1', current: '21.6.2', nightly: '22.0.0' }
+// { lts: '24.15.0', current: '25.9.0', nightly: '26.0.0-nightly...', last: '25.9.0' }
 
-console.log(versions.lts); // 20.11.1
-console.log(versions.current); // 21.6.2
-console.log(versions.nightly); // 22.0.0
+console.log(versions.lts);     // 24.15.0
+console.log(versions.current); // 25.9.0
+console.log(versions.nightly); // 26.0.0-nightly...
+console.log(versions.last);    // 25.9.0
 
-console.log(await lts()); // 20.11.1
-console.log(await current()); // 21.6.2
-console.log(await nightly()); // 22.0.0
+console.log(await lts());     // 24.15.0
+console.log(await current()); // 25.9.0
+console.log(await nightly()); // 26.0.0-nightly...
+console.log(await last());    // 25.9.0
 ```
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) installation
@@ -82,24 +84,23 @@ deno i -g npm:vernode
 
 ```bash
 vernode
-# LTS: 20.14.0
-# Current: 22.2.0
-# Nightly: 23.0.0
+# LTS:     24.15.0
+# Current: 25.9.0
+# Nightly: 26.0.0-nightly...
+# Last:    25.9.0
 
-vernode json
-# { lts: '20.14.0', current: '22.2.0', nightly: '23.0.0' }
+vernode lts      # 24.15.0
+vernode current  # 25.9.0
+vernode nightly  # 26.0.0-nightly...
+vernode last     # 25.9.0  (absolute latest stable release)
 
-vernode lts
-# 20.14.0
+vernode json     # full JSON output (all versions)
+vernode -j       # same as above via flag
 
-vernode current
-# 22.2.0
-
-vernode nightly
-# 23.0.0
+vernode lts -j   # { "lts": "24.15.0" }
 
 vernode help
-# guess what it does
+vernode -v       # print vernode version
 ```
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation

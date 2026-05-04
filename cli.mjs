@@ -23,11 +23,12 @@ Usage:
   vernode [command] [options]
 
 Commands:
-  (none)            Show all versions (LTS, Current, Nightly)
+  (none)            Show all versions (LTS, Current, Nightly, Last)
   l, lts            Show latest LTS version
   c, current        Show latest Current version
   n, nightly        Show latest Nightly version
   last              Show absolute latest stable version
+  j, json           Show all versions as JSON
   help              Show this help message
 
 Options:
@@ -93,6 +94,11 @@ async function run() {
           break;
         case 'last':
           formatData({ last: await last() });
+          break;
+        case 'j':
+        case 'json':
+          // backward-compatible alias: always output full JSON
+          console.log(JSON.stringify(await all(), null, 2));
           break;
         default:
           console.error(`Unknown command: ${command}`);
