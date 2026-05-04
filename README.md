@@ -125,5 +125,5 @@ bunx vernode
 [DENO](https://docs.deno.com/runtime/reference/cli/run/)
 
 ```bash
-deno run --allow-net npm:vernode
+deno run --allow-net --allow-read npm:vernode
 ```
