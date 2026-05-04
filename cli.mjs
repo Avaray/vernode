@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 ':' //; command -v node >/dev/null 2>&1 && exec node "$0" "$@"; command -v bun >/dev/null 2>&1 && exec bun "$0" "$@"; command -v deno >/dev/null 2>&1 && exec deno run "$0" "$@"; echo "Error: Please install node, bun, or deno" >&2; exit 1
 
-import all, { lts, current, nightly, last } from './module.mjs';
+import all, { lts, current, nightly } from './module.mjs';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,11 +23,10 @@ Usage:
   vernode [command] [options]
 
 Commands:
-  (none)            Show all versions (LTS, Current, Nightly, Last)
+  (none)            Show all versions (LTS, Current, Nightly)
   l, lts            Show latest LTS version
   c, current        Show latest Current version
   n, nightly        Show latest Nightly version
-  last              Show absolute latest stable version
   j, json           Show all versions as JSON
   help              Show this help message
 
@@ -56,7 +55,6 @@ function formatData(data) {
     if (data.lts) console.log(`LTS:     ${data.lts}`);
     if (data.current) console.log(`Current: ${data.current}`);
     if (data.nightly) console.log(`Nightly: ${data.nightly}`);
-    if (data.last) console.log(`Last:    ${data.last}`);
   }
 }
 
@@ -92,12 +90,8 @@ async function run() {
         case 'nightly':
           formatData({ nightly: await nightly() });
           break;
-        case 'last':
-          formatData({ last: await last() });
-          break;
         case 'j':
         case 'json':
-          // backward-compatible alias: always output full JSON
           console.log(JSON.stringify(await all(), null, 2));
           break;
         default:

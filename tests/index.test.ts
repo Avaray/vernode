@@ -1,5 +1,5 @@
 import { test, expect, describe } from "bun:test";
-import all, { lts, current, nightly, last } from "../module.mjs";
+import all, { lts, current, nightly } from "../module.mjs";
 
 const semverRegex = /^\d+\.\d+\.\d+$/;
 const nightlyRegex = /^\d+\.\d+\.\d+(-nightly\d+\w+)?$/;
@@ -11,12 +11,10 @@ describe("vernode core logic", () => {
     expect(versions).toHaveProperty("lts");
     expect(versions).toHaveProperty("current");
     expect(versions).toHaveProperty("nightly");
-    expect(versions).toHaveProperty("last");
 
     expect(versions.lts).toMatch(semverRegex);
     expect(versions.current).toMatch(semverRegex);
     expect(versions.nightly).toMatch(nightlyRegex);
-    expect(versions.last).toMatch(semverRegex);
   }, 15000);
 
   test("lts() returns a valid semver version", async () => {
@@ -32,11 +30,6 @@ describe("vernode core logic", () => {
   test("nightly() returns a valid version string", async () => {
     const version = await nightly();
     expect(version).toMatch(nightlyRegex);
-  }, 10000);
-
-  test("last() returns a valid semver version", async () => {
-    const version = await last();
-    expect(version).toMatch(semverRegex);
   }, 10000);
 
   test("lts() major version is even (LTS releases are always even)", async () => {

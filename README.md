@@ -36,22 +36,20 @@ deno add npm:vernode
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
-import vernode, { lts, current, nightly, last } from 'vernode';
+import vernode, { lts, current, nightly } from 'vernode';
 
 const versions = await vernode();
 
 console.log(versions);
-// { lts: '24.15.0', current: '25.9.0', nightly: '26.0.0-nightly...', last: '25.9.0' }
+// { lts: '24.15.0', current: '25.9.0', nightly: '26.0.0-nightly...' }
 
 console.log(versions.lts);     // 24.15.0
 console.log(versions.current); // 25.9.0
 console.log(versions.nightly); // 26.0.0-nightly...
-console.log(versions.last);    // 25.9.0
 
 console.log(await lts());     // 24.15.0
 console.log(await current()); // 25.9.0
 console.log(await nightly()); // 26.0.0-nightly...
-console.log(await last());    // 25.9.0
 ```
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) installation
@@ -87,12 +85,10 @@ vernode
 # LTS:     24.15.0
 # Current: 25.9.0
 # Nightly: 26.0.0-nightly...
-# Last:    25.9.0
 
 vernode lts      # 24.15.0
 vernode current  # 25.9.0
 vernode nightly  # 26.0.0-nightly...
-vernode last     # 25.9.0  (absolute latest stable release)
 
 vernode json     # full JSON output (all versions)
 vernode -j       # same as above via flag
