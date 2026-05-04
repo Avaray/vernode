@@ -1,5 +1,5 @@
 import { test, expect, describe } from "bun:test";
-import all, { lts, current, nightly } from "../module.mjs";
+import all, { lts, current, nightly, reset } from "../module.mjs";
 
 const semverRegex = /^\d+\.\d+\.\d+$/;
 const nightlyRegex = /^\d+\.\d+\.\d+(-nightly\d+\w+)?$/;
@@ -39,6 +39,19 @@ describe("vernode core logic", () => {
     const ltsMajor = parseInt(l!.split(".")[0], 10);
     expect(currentMajor).toBeGreaterThanOrEqual(ltsMajor);
   }, 10000);
+
+  test("reset() clears cache and allows re-fetching", async () => {
+    // Fetch once to populate cache
+    const first = await lts();
+    expect(first).toMatch(semverRegex);
+
+    // Reset cache
+    reset();
+
+    // Fetch again — should still return a valid version (re-fetched)
+    const second = await lts();
+    expect(second).toMatch(semverRegex);
+  }, 15000);
 });
 
 describe("vernode CLI integration", () => {
