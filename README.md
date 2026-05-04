@@ -119,17 +119,8 @@ pnpm dlx vernode
 bunx vernode
 ```
 
-[DENO](https://docs.deno.com/runtime/reference/cli/run/) V2
+[DENO](https://docs.deno.com/runtime/reference/cli/run/)
 
 ```bash
 deno run --allow-net npm:vernode
 ```
-
-# Changelog
-
-### Version 3.0.0 - Breaking changes
-
-- The code has been restructured and the way the module is used has been changed.
-- Optimized data fetching. Data fetching is done in parallel to reduce the execution time. The fetched data is split into chunks, allowing us to download much less data and receive results much faster.
-- In the CLI, added the option to display data as JSON.
-- All previous versions have been marked as deprecated.
