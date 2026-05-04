@@ -9,28 +9,28 @@ You can use this as a [module](https://nodejs.org/api/esm.html#introduction) in 
 
 ## [Module](https://nodejs.org/api/esm.html#introduction) Installation
 
-By using [NPM](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry)
+[NPM](https://docs.npmjs.com/cli/v11/commands/npm-install)
 
 ```bash
 npm i vernode
 ```
 
-By using [PNPM](https://pnpm.io/pnpm-cli)
+[PNPM](https://pnpm.io/cli/add)
 
 ```bash
 pnpm add vernode
 ```
 
-By using [BUN](https://bun.sh/docs/cli/install)
+[BUN](https://bun.com/docs/guides/install/add)
 
 ```bash
-bun i vernode
+bun add vernode
 ```
 
-By using [DENO](https://docs.deno.com/) V2
+[DENO](https://docs.deno.com/runtime/reference/cli/add/)
 
 ```bash
-deno i npm:vernode
+deno add npm:vernode
 ```
 
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
@@ -54,25 +54,25 @@ console.log(await nightly()); // 22.0.0
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) installation
 
-By using [NPM](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry)
+[NPM](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry)
 
 ```bash
 npm i -g vernode
 ```
 
-By using [PNPM](https://pnpm.io/pnpm-cli)
+[PNPM](https://pnpm.io/pnpm-cli)
 
 ```bash
 pnpm add -g vernode
 ```
 
-By using [BUN](https://bun.sh/docs/cli/install)
+[BUN](https://bun.sh/docs/cli/install)
 
 ```bash
 bun i -g vernode
 ```
 
-By using [DENO](https://docs.deno.com/runtime/reference/cli/install/) V2
+[DENO](https://docs.deno.com/runtime/reference/cli/install/) V2
 
 ```bash
 deno i -g npm:vernode
@@ -104,22 +104,28 @@ vernode help
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) usage without installation
 
-By using [BUN](https://bun.sh/docs/cli/bunx)
+[NPM](https://docs.npmjs.com/cli/v11/commands/npx)
+
+```bash
+npx vernode
+```
+
+[PNPM](https://pnpm.io/cli/dlx)
+
+```bash
+pnpm dlx vernode
+```
+
+[BUN](https://bun.sh/docs/cli/bunx)
 
 ```bash
 bunx vernode
 ```
 
-By using [DENO](https://docs.deno.com/runtime/reference/cli/run/) V2
+[DENO](https://docs.deno.com/runtime/reference/cli/run/) V2
 
 ```bash
 deno run --allow-net npm:vernode
-```
-
-By using `dlx` from [PNPM](https://pnpm.io/cli/dlx)
-
-```bash
-pnpm dlx vernode
 ```
 
 # Changelog

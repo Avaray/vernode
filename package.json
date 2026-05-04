@@ -1,17 +1,14 @@
 {
-  "name": "vernode",
-  "version": "3.0.2",
   "author": "Avaray",
-  "license": "MIT",
-  "description": "Checks for latest NodeJS versions",
-  "main": "module.mjs",
   "bin": {
     "vernode": "cli.mjs"
   },
-  "types": "module.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Checks for latest NodeJS versions",
+  "engines": {
+    "node": ">=18.0.0"
   },
+  "engineStrict": true,
+  "homepage": "https://github.com/Avaray/vernode#readme",
   "keywords": [
     "node",
     "nodejs",
@@ -32,13 +29,17 @@
     "cli",
     "dependency-free"
   ],
+  "license": "MIT",
+  "main": "module.mjs",
+  "name": "vernode",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Avaray/vernode.git"
   },
-  "homepage": "https://github.com/Avaray/vernode#readme",
-  "engines": {
-    "node": ">=18.0.0"
+  "scripts": {
+    "test": "bun test",
+    "start": "bun run cli.mjs"
   },
-  "engineStrict": true
+  "types": "module.d.ts",
+  "version": "3.0.2"
 }
