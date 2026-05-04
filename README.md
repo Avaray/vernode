@@ -36,7 +36,7 @@ deno add npm:vernode
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
-import vernode, { lts, current, nightly } from 'vernode';
+import vernode, { lts, current, nightly, reset } from 'vernode';
 
 const versions = await vernode();
 
@@ -50,6 +50,9 @@ console.log(versions.nightly); // 26.0.0-nightly...
 console.log(await lts());     // 24.15.0
 console.log(await current()); // 25.9.0
 console.log(await nightly()); // 26.0.0-nightly...
+
+// In long-running processes, clear the cache to re-fetch fresh data
+reset();
 ```
 
 ## [CLI](https://en.wikipedia.org/wiki/Command-line_interface) installation
