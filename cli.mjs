@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 ':' //; command -v node >/dev/null 2>&1 && exec node "$0" "$@"; command -v bun >/dev/null 2>&1 && exec bun "$0" "$@"; command -v deno >/dev/null 2>&1 && exec deno run "$0" "$@"; echo "Error: Please install node, bun, or deno" >&2; exit 1
 
-import all, { lts, current, nightly } from './module.mjs';
+import all, { lts, current, nightly, last } from './module.mjs';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
