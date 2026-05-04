@@ -12,7 +12,7 @@ describe("vernode core logic", () => {
     expect(versions).toHaveProperty("current");
     expect(versions).toHaveProperty("nightly");
     
-    // Ensure no redundant keys like "last" remain
+    // Ensure the object contains exactly the 3 expected version types
     expect(Object.keys(versions)).toHaveLength(3);
 
     expect(versions.lts).toMatch(semverRegex);
