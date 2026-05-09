@@ -43,13 +43,13 @@ const versions = await vernode();
 console.log(versions);
 // { lts: '24.15.0', current: '25.9.0', nightly: '26.0.0-nightly...' }
 
-console.log(versions.lts);     // 24.15.0
-console.log(versions.current); // 25.9.0
-console.log(versions.nightly); // 26.0.0-nightly...
+versions.lts        // 24.15.0
+versions.current    // 25.9.0
+versions.nightly    // 26.0.0-nightly...
 
-console.log(await lts());     // 24.15.0
-console.log(await current()); // 25.9.0
-console.log(await nightly()); // 26.0.0-nightly...
+await lts()         // 24.15.0
+await current()     // 25.9.0
+await nightly()     // 26.0.0-nightly...
 
 // In long-running processes, clear the cache to re-fetch fresh data
 reset();
@@ -93,10 +93,8 @@ vernode lts      # 24.15.0
 vernode current  # 25.9.0
 vernode nightly  # 26.0.0-nightly...
 
-vernode json     # full JSON output (all versions)
+vernode json     # {"lts": "24.15.0", "current": "25.9.0", "nightly": "26.0.0-nightly..."}
 vernode -j       # same as above via flag
-
-vernode lts -j   # { "lts": "24.15.0" }
 
 vernode help
 vernode -v       # print vernode version
@@ -110,10 +108,10 @@ vernode -v       # print vernode version
 npx vernode
 ```
 
-[PNPM](https://pnpm.io/cli/dlx)
+[PNPM](https://pnpm.io/cli/pnx)
 
 ```bash
-pnpm dlx vernode
+pnx vernode
 ```
 
 [BUN](https://bun.sh/docs/cli/bunx)
