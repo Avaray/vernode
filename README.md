@@ -1,11 +1,16 @@
 # ❔ VERNODE
 
-[Vernode](https://www.npmjs.com/package/vernode) checks for latest [NodeJS](https://nodejs.org/en/about) versions.  
-You can use this as a [module](https://nodejs.org/api/esm.html#introduction) in your NodeJS program or as a [CLI command](https://en.wikipedia.org/wiki/Command-line_interface) in your system.
+[Vernode](https://www.npmjs.com/package/vernode) checks for latest
+[NodeJS](https://nodejs.org/en/about) versions.\
+You can use this as a [module](https://nodejs.org/api/esm.html#introduction) in
+your NodeJS program or as a
+[CLI command](https://en.wikipedia.org/wiki/Command-line_interface) in your
+system.
 
 ## Requirements
 
-[NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of [Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).
+[NodeJS](https://nodejs.org/en/download) version **18.0.0** or higher because of
+[Fetch API](https://nodejs.org/en/blog/release/v18.0.0/).
 
 ## [Module](https://nodejs.org/api/esm.html#introduction) Installation
 
@@ -36,20 +41,20 @@ deno add npm:vernode
 ## [Module](https://nodejs.org/api/esm.html#introduction) Usage
 
 ```js
-import vernode, { lts, current, nightly, reset } from 'vernode';
+import vernode, { current, lts, nightly, reset } from "vernode";
 
 const versions = await vernode();
 
-console.log(versions);
+versions;
 // { lts: '24.15.0', current: '25.9.0', nightly: '26.0.0-nightly...' }
 
-versions.lts        // 24.15.0
-versions.current    // 25.9.0
-versions.nightly    // 26.0.0-nightly...
+versions.lts; // 24.15.0
+versions.current; // 25.9.0
+versions.nightly; // 26.0.0-nightly...
 
-await lts()         // 24.15.0
-await current()     // 25.9.0
-await nightly()     // 26.0.0-nightly...
+await lts(); // 24.15.0
+await current(); // 25.9.0
+await nightly(); // 26.0.0-nightly...
 
 // In long-running processes, clear the cache to re-fetch fresh data
 reset();
